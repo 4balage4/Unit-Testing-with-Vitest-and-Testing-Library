@@ -27,7 +27,7 @@ export default function UserProfile({ id }) {
       {/* if there is no user will show the loading screen. */}
       {user ? (
         <div>
-          <p>User ID:{user.id}</p>
+          <p>User ID: {user.id}</p>
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
         </div>

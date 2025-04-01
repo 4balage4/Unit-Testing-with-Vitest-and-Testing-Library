@@ -4,9 +4,22 @@
 
 
 const fetchAPI = async () => {
- const response = await fetch('https://dog.ceo/api/breeds/image/random')
-  const data = await response.json()
-  return data
+
+ try {
+   const response = await fetch('https://dog.ceo/api/breeds/image/random')
+
+   // handle http errors
+   if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+   }
+
+  return await response.json()
+
+ } catch (error) {
+    console.error('error fetching: ', error)
+    throw error
+ }
+
 }
 
 

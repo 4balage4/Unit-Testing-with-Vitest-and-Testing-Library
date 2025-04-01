@@ -1,17 +1,9 @@
 import {render, screen, waitFor} from '@testing-library/react'
 import ToBinary from './ToBinary'
-import {test, expect, describe, vi} from 'vitest'
-import binaryConverter from '../utils/binaryConverter'
-import { afterEach, beforeEach } from 'node:test'
+import {test, expect, describe} from 'vitest'
 import userEvent from '@testing-library/user-event'
 
-beforeEach(() => {
-  vi.mock('../utils/binaryConverter.js')
-})
 
-afterEach(() => {
-  vi.clearAllMocks()
-})
 
 describe('ToBinary component', () => {
   test('initial render', () => {
@@ -26,38 +18,26 @@ describe('ToBinary component', () => {
 
   })
 
-  test('mocks correctly the input to binary', async () => {
-    // setup results ('Nirvana')
-    const results = '01001110011010010111001001110110011000010110111001100001'
+  test('correctly converts the input to binary', async () => {
+    // testing when a new element appears in the dom
+    // using await for this.
+    // since the toBinary is not an api or async function we dont need to mock it.
 
-    // run the mock,
-
-    // WHY DOES THIS RETURN suspended data?
-    binaryConverter.mockResolvedValueOnce(results)
-
-
-      //render
     render(<ToBinary/>)
-
-    // const input = screen.getByRole('textbox')
-
-    // await userEvent.type(input, "Nirvana")
-
-    // await waitFor(() => {
-    //   const pTag = screen.getByRole('paragraph')
-    //   const binary = screen.getByText('01001110011010010111001001110110011000010110111001100001')
-
-    //   expect(pTag).toBeInTheDocument()
-    //   expect(binary).toBeInTheDocument()
+    // setup results ('Nirvana')
 
 
-    // })
+    const input = screen.getByRole('textbox')
 
+    // user event is async, so we need to await
+    await userEvent.type(input, "Nirvana")
+    const result = '01001110011010010111001001110110011000010110111001100001'
 
-
-  })
-
-  test('displays binary numbers', () => {
-      // test the with the AWAIT?
+    // the change will appear, the element is not there
+    await waitFor(() => {
+      // checks that the results are in the document or not
+      const pTag = screen.getByText(result)
+      expect(pTag).toBeInTheDocument()
+    })
   })
 })
