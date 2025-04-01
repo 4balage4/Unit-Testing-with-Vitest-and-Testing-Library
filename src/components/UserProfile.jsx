@@ -14,7 +14,6 @@ export default function UserProfile({ id }) {
         }
         const data = await response.json();
         setUser(data);
-        console.log("User fetched:", data);
       } catch (err) {
         console.log("Error fetching user:", err);
       }
