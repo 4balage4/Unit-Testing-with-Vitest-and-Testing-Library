@@ -8,7 +8,7 @@ export default function Counter() {
       <h2>Counter</h2>
       <button onClick={() => setCount((prev)=> prev +1)}>Increment</button>
       <button onClick={() => setCount((prev) => prev - 1)}>Decrement</button>
-      <p>{count}</p>
+      <p>Count: {count}</p>
     </>
   )
 }
