@@ -6,6 +6,7 @@ import RenderAPI from "./components/RenderAPI";
 import UserProfile from "./components/UserProfile";
 import Post from "./components/Post";
 import ToBinary from "./components/ToBinary"
+import Checkbox from './components/Checkbox'
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
       <Post />
       <Form />
       <RenderAPI />
-      <UserProfile id="5" />
+      <UserProfile id="1" />
       <ToBinary/>
+      <Checkbox/>
     </>
   );
 }

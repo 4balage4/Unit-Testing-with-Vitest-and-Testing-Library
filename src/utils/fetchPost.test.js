@@ -1,25 +1,40 @@
+import { afterEach } from 'node:test'
 import fetchPost from './fetchPost'
 import {test, expect, describe, vi} from 'vitest'
 
-vi.mock('./fetchPost')
+
+afterEach(() => {
+  vi.restoreAllMocks()
+})
+
+
+// IN this test I am not mocking the API.
+// I want to know is it truly returns a data
+// this means we are spying on the fetch
+
 
 describe('fetchPost', () => {
 
-  test('mocking the function', async () => {
-
-    // keep the structure of the data from the jsonplaceholder
-    const response = {
+  test('fetches a post', async () => {
+    //
+    const mockResponse = {
+      userId: 1,
       id: 1,
       title: 'Mocked post title',
-      text: 'Hello from the other sideeee!'}
+      body: 'Hello from the other sideeee!'}
 
-    fetchPost.mockResolvedValueOnce(response)
+      const fetchRequest = vi.spyOn(globalThis, 'fetch').mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+    })
 
-    const result = await(fetchPost(1))
+    const data = await fetchPost(1)
 
-    expect(result).toEqual(response)
+    expect(fetchRequest).toBeCalledTimes(1)
+    expect(fetchRequest).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/posts/1')
 
-    expect(fetchPost).toHaveBeenCalledTimes(1)
-    expect(fetchPost).toHaveBeenCalledWith(1)
+    expect(data).toEqual(mockResponse)
   })
+
+
 })

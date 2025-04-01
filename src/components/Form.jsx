@@ -20,7 +20,7 @@ function Form() {
   const onSubmit = (event) => {
     event.preventDefault()
     console.log('submitted: ',form)
-    alert(form)
+    alert(`Form submitted by ${form.name}`)
 
     setForm({
       name: '',

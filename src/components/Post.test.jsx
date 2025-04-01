@@ -1,16 +1,12 @@
 import {render, screen, waitFor} from '@testing-library/react'
 import Post from './Post'
-import {test, expect, describe, vi} from 'vitest'
+import {test, expect, describe, vi, afterEach} from 'vitest'
 import userEvent from '@testing-library/user-event'
 import fetchPost from '../utils/fetchPost'
-import { afterEach, beforeEach } from 'node:test'
-
 
 describe('Post', () => {
 
-  beforeEach(() => {
-    vi.mock('../utils/fetchPost')
-  })
+  vi.mock('../utils/fetchPost')
 
   afterEach(() => {
     vi.clearAllMocks()

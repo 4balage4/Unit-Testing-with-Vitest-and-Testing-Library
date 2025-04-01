@@ -3,6 +3,15 @@ import React, { useEffect, useState } from "react";
 
 // just to have som utilities imported into a component
 
+// getting the breed name
+export const getName = (data) => {
+  if (!data.message) {
+    return null
+  }
+  const name = data.message.match(/breeds\/([^/]+)/);
+  return name ? name[1] : null;
+};
+
 export default function RenderAPI() {
   const [data, setData] = useState(null);
 
@@ -14,12 +23,6 @@ export default function RenderAPI() {
     fetchData();
   }, []);
 
-  // getting the breed name
-  const getName = (data) => {
-    const name = data.message.match(/breeds\/([^/]+)/);
-    console.log(name);
-    return name ? name[1] : null;
-  };
 
   return (
     <div style={{ marginTop: "40px" }}>
