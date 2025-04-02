@@ -1,7 +1,6 @@
 
 import { afterEach } from 'node:test'
 import fetchApi from './fetchApi'
-import {test, expect, describe, vi} from 'vitest'
 
 
 // IN this test I am not mocking the API.

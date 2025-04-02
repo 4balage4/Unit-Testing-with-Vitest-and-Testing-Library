@@ -1,6 +1,5 @@
 import {render, screen, waitFor} from '@testing-library/react'
 import ToBinary from './ToBinary'
-import {test, expect, describe} from 'vitest'
 import userEvent from '@testing-library/user-event'
 
 

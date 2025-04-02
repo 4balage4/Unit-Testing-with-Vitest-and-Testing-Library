@@ -24,6 +24,7 @@ export default function UserProfile({ id }) {
   return (
     <>
       <h2>UserProfile</h2>
+      <p> fetching user id: {id}</p>
       {/* if there is no user will show the loading screen. */}
       {user ? (
         <div>

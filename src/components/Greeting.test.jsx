@@ -1,6 +1,5 @@
 import {render, screen} from '@testing-library/react'
 import Greeting from './Greeting'
-import {test, expect, describe} from 'vitest'
 
 
 describe('Greeting', () => {

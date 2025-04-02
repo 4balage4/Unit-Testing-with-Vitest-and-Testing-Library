@@ -1,6 +1,5 @@
 import {render, screen} from '@testing-library/react'
 import RenderAPI, { getName } from './RenderAPI'
-import {test, expect, describe, afterEach, vi} from 'vitest'
 import fetchApi from '../utils/fetchApi'
 
 

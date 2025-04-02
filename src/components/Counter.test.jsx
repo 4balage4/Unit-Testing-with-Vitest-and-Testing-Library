@@ -1,6 +1,5 @@
 import {render, screen} from '@testing-library/react';
 import Counter from './Counter';
-import {test, expect, describe} from 'vitest'
 import userEvent from '@testing-library/user-event'
 
 
