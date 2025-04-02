@@ -1,6 +1,5 @@
 import { afterEach } from 'node:test'
 import fetchPost from './fetchPost'
-import {test, expect, describe, vi} from 'vitest'
 
 
 afterEach(() => {

@@ -19,6 +19,7 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      vitest,
     },
     rules: {
       ...js.configs.recommended.rules,

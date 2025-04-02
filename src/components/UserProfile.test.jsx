@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import UserProfile from "./UserProfile";
-import { test, expect, describe, vi } from "vitest";
 import { afterEach } from "node:test";
 
 afterEach(() => {
@@ -12,9 +11,11 @@ afterEach(() => {
 describe("UserProfile component", () => {
 
   test("initial render, recieves prop", async () => {
-    render(<UserProfile id="5" />);
+    render(<UserProfile id="2" />);
 
-    const userId = await screen.findByText("User ID: 5");
+    // changed this line, and added a permanent p tag to the component to be able to test synchronously
+    //that the component recieves a prop.
+    const userId = await screen.findByText("fetching user id: 2");
 
     expect(userId).toBeInTheDocument();
   });

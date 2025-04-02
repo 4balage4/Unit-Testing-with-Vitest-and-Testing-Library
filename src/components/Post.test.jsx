@@ -1,6 +1,5 @@
 import {render, screen, waitFor} from '@testing-library/react'
 import Post from './Post'
-import {test, expect, describe, vi, afterEach} from 'vitest'
 import userEvent from '@testing-library/user-event'
 import fetchPost from '../utils/fetchPost'
 
